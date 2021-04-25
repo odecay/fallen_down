@@ -3,11 +3,20 @@ var magnitude = 2.4
 var is_standing: bool =	1
 
 
-export var gravity = Vector3.DOWN * 14
+export var gravity = Vector3.DOWN * 12
 export var speed = 20
 
 var velocity = Vector3.ZERO
-var max_speed = 200.0
+var max_speed = 120.0
+onready var hex_orbs = [$HexOrb0, $HexOrb1, $HexOrb2, $HexOrb3, $HexOrb4, $HexOrb5]
+var hex_positions = {
+	0 : Vector3(2, 0, 0),
+	1 : Vector3(-2, 0, 0),
+	2 : Vector3(1, 0, 2),
+	3 : Vector3(1, 0, -2),
+	4 : Vector3(2, 0, 1),
+	5 : Vector3(-2, 0, 1)
+}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -44,3 +53,27 @@ func boost():
 	
 func particle_stream():
 	$Particles.emitting = true
+	$HitSound.play()
+
+func get_position():
+	return global_transform
+
+func get_last_orb_position():
+	var orb = hex_orbs.back()
+	return orb.global_transform
+
+func orb_remove() -> Node:
+		var orb = hex_orbs.pop_back()
+		remove_child(orb)
+		return orb
+
+func orb_add(orb: Node):
+	add_child(orb)
+	orb.translate(hex_positions[hex_orbs.size()])
+	hex_orbs.append(orb)
+	
+func has_orbs() -> bool:
+	if hex_orbs.empty():
+		return false
+	else:
+		return true

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="PhysicsMaterial" id=3]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 30, 1, 30 )
+
+[node name="StaticBody" type="StaticBody"]
+visible = false
+physics_material_override = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -600, 0 )
+visible = false
+shape = SubResource( 4 )
