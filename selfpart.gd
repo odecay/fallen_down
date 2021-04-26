@@ -1,15 +1,8 @@
 extends Spatial
 
+onready var attractor = $Attractor setget set_attractor, get_attractor
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_attractor(_input):
+	pass
+func get_attractor() -> Node:
+	return attractor

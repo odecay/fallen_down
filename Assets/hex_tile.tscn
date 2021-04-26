@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Material_001.material" type="Material" id=1]
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Cylinder"
+surfaces/0 = {
+"aabb": AABB( -8.66025, 0, -10, 17.3205, 1e-05, 20 ),
+"array_data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 193, 0, 127, 0, 0, 127, 0, 0, 127, 0, 56, 95, 34, 103, 144, 10, 65, 0, 0, 0, 0, 255, 255, 159, 192, 0, 127, 0, 0, 127, 0, 0, 127, 96, 59, 25, 52, 102, 144, 10, 65, 0, 0, 0, 0, 1, 0, 160, 64, 0, 127, 0, 0, 127, 0, 0, 127, 96, 59, 243, 57, 122, 172, 106, 181, 0, 0, 0, 0, 0, 0, 32, 65, 0, 127, 0, 0, 127, 0, 0, 127, 0, 56, 230, 59, 103, 144, 10, 193, 0, 0, 0, 0, 254, 255, 159, 64, 0, 127, 0, 0, 127, 0, 0, 127, 250, 44, 243, 57, 103, 144, 10, 193, 0, 0, 0, 0, 254, 255, 159, 192, 0, 127, 0, 0, 127, 0, 0, 127, 250, 44, 25, 52 ),
+"array_index_data": PoolByteArray( 1, 0, 5, 0, 0, 0, 5, 0, 3, 0, 4, 0, 3, 0, 1, 0, 2, 0, 5, 0, 1, 0, 3, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 12,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 6
+}
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( 8.6603, 0, -5, -8.6603, 0, -5, 0, 0, -10, -8.6603, 0, -5, 0, 0, 10, -8.6603, 0, 5, 0, 0, 10, 8.6603, 0, -5, 8.6603, 0, 5, -8.6603, 0, -5, 8.6603, 0, -5, 0, 0, 10 )
+
+[node name="Cylinder" type="MeshInstance"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 2 )

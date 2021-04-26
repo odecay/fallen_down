@@ -1,9 +1,9 @@
 extends Spatial
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+## Declare member variables here. Examples:
+## var a = 2
+## var b = "text"
 onready var trigger = $LoadTrigger setget set_trigger, get_trigger
 onready var slow_trigger = get_node("Sprite3D/SlowTrigger") setget set_slow_trigger, get_slow_trigger
 onready var speed_trigger = get_node("Sprite3D2/SpeedTrigger") setget set_speed_trigger, get_speed_trigger
@@ -25,3 +25,4 @@ func set_speed_trigger(input):
 	pass
 func get_speed_trigger():
 	return speed_trigger
+
