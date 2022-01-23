@@ -7,7 +7,8 @@ var gravity = Vector3.DOWN * 12
 #var gravity = -12
 var speed = 20
 var velocity = Vector3.ZERO
-var max_speed = 120.0
+#var max_speed = 160.0
+var max_speed = 50.0
 onready var hex_orbs = [$HexOrb0, $HexOrb1, $HexOrb2, $HexOrb3, $HexOrb4, $HexOrb5]
 var hex_positions = [
 	Vector3(2, 0, 0),
@@ -27,7 +28,6 @@ func _physics_process(delta):
 	get_input(delta)
 	velocity = move_and_slide(velocity, Vector3.UP)
 
-# warning-ignore:unused_argument
 func get_input(delta):
 	var vy = velocity.y
 	velocity = Vector3.ZERO
@@ -44,7 +44,8 @@ func get_input(delta):
 func slow():
 	velocity = velocity.normalized() * max_speed/4
 func boost():
-	velocity = velocity.normalized() * max_speed
+	#velocity = velocity.normalized() * max_speed*.75
+	velocity.y = velocity.y * 1.2
 	
 func particle_stream():
 	$Particles.emitting = true

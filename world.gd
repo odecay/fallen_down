@@ -3,16 +3,13 @@ extends Spatial
 const chunk = preload("res://Assets/tower_tube.tscn")
 const platform = preload("res://Assets/hex_tile.tscn")
 const self_part = preload("res://selfpart.tscn")
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 var world = []
 var past = []
 var counter = 0
 var chunk_height = 200
 var world_hex_orbs = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	add_chunk()
 	add_chunk()

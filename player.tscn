@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/falling_skellington.png" type="Texture" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
@@ -21,35 +21,13 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.532895, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="Curve" id=5]
-_data = [ Vector2( 0, 0.527273 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
-
-[sub_resource type="ParticlesMaterial" id=7]
-trail_divisor = 2
-trail_size_modifier = SubResource( 6 )
-emission_shape = 2
-emission_box_extents = Vector3( 1, 1, 1 )
-gravity = Vector3( 0, 4, 0 )
-scale = 4.0
-scale_random = 1.0
-scale_curve = SubResource( 4 )
-color = Color( 1, 0, 0, 1 )
-hue_variation = 0.72
-hue_variation_random = 0.63
-
 [sub_resource type="QuadMesh" id=8]
 size = Vector2( 0.001, 0.4 )
 
-[sub_resource type="BoxShape" id=10]
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.532895, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="BoxShape" id=9]
 
 [node name="player" type="KinematicBody"]
 script = ExtResource( 2 )
@@ -66,6 +44,7 @@ texture = ExtResource( 1 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3, 0 )
 environment = ExtResource( 3 )
+current = true
 fov = 90.0
 far = 1000.0
 
@@ -76,7 +55,7 @@ light_bake_mode = 0
 omni_range = 69.2
 omni_attenuation = 2.07054
 
-[node name="Particles" type="Particles" parent="."]
+[node name="Particles" type="CPUParticles" parent="."]
 material_override = SubResource( 2 )
 cast_shadow = 0
 emitting = false
@@ -84,8 +63,16 @@ amount = 300
 one_shot = true
 speed_scale = 2.31
 explosiveness = 0.7
-process_material = SubResource( 7 )
-draw_pass_1 = SubResource( 8 )
+mesh = SubResource( 8 )
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+gravity = Vector3( 0, 4, 0 )
+scale_amount = 4.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 3 )
+color = Color( 1, 0, 0, 1 )
+hue_variation = 0.72
+hue_variation_random = 0.63
 
 [node name="HitSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 4 )
@@ -111,4 +98,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.5 )
 [node name="OrbCollector" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="OrbCollector"]
-shape = SubResource( 10 )
+shape = SubResource( 9 )
