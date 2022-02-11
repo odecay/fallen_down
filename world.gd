@@ -14,6 +14,9 @@ func _ready():
 	add_chunk()
 	add_chunk()
 	add_chunk()
+	add_chunk()
+	add_chunk()
+	add_chunk()
 
 func add_chunk():
 	var new_chunk = chunk.instance()
@@ -45,8 +48,8 @@ func _on_LoadTrigger_body_entered(body):
 		if past.size() > world.size():
 			move_chunk()
 
-		if world.size() < 4:
-			add_chunk()
+#		if world.size() < 4:
+#			add_chunk()
 		
 		#if counter % 3 == 0:
 		#	var node = platform.instance()

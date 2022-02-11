@@ -1,4 +1,6 @@
 extends KinematicBody
+class_name Player
+
 var magnitude = 2.4
 var is_standing: bool =	1
 
